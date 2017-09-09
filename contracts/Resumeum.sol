@@ -9,8 +9,8 @@ contract Resumeum {
      string summary;
      string country;
 
-     // add a resume
-     function addResume(
+     // create a resume
+     function createResume(
           string _firstName,
           string _lastName,
           string _headline,
