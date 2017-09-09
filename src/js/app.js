@@ -1,68 +1,66 @@
 App = {
-  web3Provider: null,
-  contracts: {},
+     web3Provider: null,
+     contracts: {},
 
-  init: function() {
-    // Load pets.
-    $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
 
-      for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+     init: function() {
+          // Load resume
+          var resumesRow = $('#resumesRow');
+          var resumeTemplate = $('#resumeTemplate');
 
-        petsRow.append(petTemplate.html());
-      }
-    });
+          resumeTemplate.find('.panel-title').text("John Doe");
+          resumeTemplate.find('.resume-headline').text("I’m an Ethereum developer");
+          resumeTemplate.find('.resume-summary').text("In the past year, I have created a lot of Ethereum smart contracts. My personal projects are available on Github");
+          resumeTemplate.find('.resume-country').text(" Belgium");
 
-    return App.initWeb3();
-  },
+          resumesRow.append(resumeTemplate.html());
 
-  initWeb3: function() {
-    /*
-     * Replace me...
-     */
+          $('#account').text("0x1daa654CfBc28F375E0f08F329dE219Fff50C765");
+          $('#accountBalance').text("10 ETH");
 
-    return App.initContract();
-  },
+          return App.initWeb3();
+     },
 
-  initContract: function() {
-    /*
-     * Replace me...
-     */
+     initWeb3: function() {
+          /*
+           * Replace me...
+           */
 
-    return App.bindEvents();
-  },
+          return App.initContract();
+     },
 
-  bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
-  },
+     initContract: function() {
+          /*
+           * Replace me...
+           */
 
-  handleAdopt: function() {
-    event.preventDefault();
+          return App.bindEvents();
+     },
 
-    var petId = parseInt($(event.target).data('id'));
+     bindEvents: function() {
+          $(document).on('click', '.btn-adopt', App.handleAdopt);
+     },
 
-    /*
-     * Replace me...
-     */
-  },
+     handleAdopt: function() {
+          event.preventDefault();
 
-  markAdopted: function(adopters, account) {
-    /*
-     * Replace me...
-     */
-  }
+          var petId = parseInt($(event.target).data('id'));
+
+          /*
+           * Replace me...
+           */
+     },
+
+     markAdopted: function(adopters, account) {
+          /*
+           * Replace me...
+           */
+     }
 
 };
 
 $(function() {
-  $(window).load(function() {
-    App.init();
-  });
+     $(window).load(function() {
+          App.init();
+     });
 });
