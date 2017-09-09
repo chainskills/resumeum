@@ -27,11 +27,11 @@ contract('Resumeum', function(accounts) {
           });
      });
 
-     // Test case: add a resume
-     it("should add a resume", function() {
+     // Test case: create a resume
+     it("should create a resume", function() {
           return Resumeum.deployed().then(function(instance) {
                contractInstance = instance;
-               return contractInstance.addResume(
+               return contractInstance.createResume(
                     firstName,
                     lastName,
                     headline,
