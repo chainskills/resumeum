@@ -47,6 +47,9 @@ App = {
                // Set the provider for our contract.
                App.contracts.Resumeum.setProvider(App.web3Provider);
 
+               // Listen for events
+               App.listenToEvents();
+
                // Retrieve the resume from the smart contract
                return App.reloadResumes();
           });
@@ -124,7 +127,6 @@ App = {
                          gas: 500000
                     });
           }).then(function(result) {
-               App.reloadResumes();
           }).catch(function(err) {
                console.error(err);
           });
@@ -132,10 +134,28 @@ App = {
 
      changeImage: function(event) {
           if (event.keyCode == 13) {
-                  var urlImage = document.getElementById("resume_profile_pic_url");
-                  $('#resume_picture').attr('src', urlImage.value);
-                  return false;
-              }
+               var urlImage = document.getElementById("resume_profile_pic_url");
+               $('#resume_picture').attr('src', urlImage.value);
+               return false;
+          }
+     },
+
+     // Listen to events raised from the contract
+     listenToEvents: function() {
+          App.contracts.Resumeum.deployed().then(function(instance) {
+               instance.createResumeEvent({}, {
+                    fromBlock: 0,
+                    toBlock: 'latest'
+               }).watch(function(error, event) {
+                    $("#events").append(
+                         '<li class="list-group-item">New resume from ' +
+                         event.args._firstName + ' ' +
+                         event.args._lastName +
+                         ' [' + event.args._consultant + '] from ' +
+                         event.args._country + '</li>');
+                    App.reloadResumes();
+               });
+          });
      },
 
 };
