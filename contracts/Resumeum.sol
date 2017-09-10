@@ -10,7 +10,12 @@ contract Resumeum {
      string country;
      string urlPicture;
 
-
+     // Events
+     event createResumeEvent(
+          address indexed _consultant,
+          string _firstName,
+          string _lastName,
+          string _country);
 
      // create a resume
      function createResume(
@@ -28,6 +33,8 @@ contract Resumeum {
           summary = _summary;
           country = _country;
           urlPicture = _urlPicture;
+
+          createResumeEvent(consultant, firstName, lastName, country);
      }
 
      // get the resume

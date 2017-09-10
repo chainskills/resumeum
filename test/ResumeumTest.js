@@ -40,8 +40,8 @@ contract('Resumeum', function(accounts) {
                     summary,
                     country,
                     urlPicture, {
-                    from: consultant
-               });
+                         from: consultant
+                    });
           }).then(function() {
                return contractInstance.getResume.call();
           }).then(function(data) {
@@ -54,4 +54,31 @@ contract('Resumeum', function(accounts) {
                assert.equal(data[6], urlPicture, "URL profile picture must be " + urlPicture);
           });
      });
+
+
+     // Test case: should check events
+     it("should trigger an event when a new resume is created", function() {
+          return Resumeum.deployed().then(function(instance) {
+               contractInstance = instance;
+               watcher = contractInstance.createResumeEvent();
+               return contractInstance.createResume(
+                    firstName,
+                    lastName,
+                    headline,
+                    summary,
+                    country,
+                    urlPicture, {
+                         from: consultant
+                    });
+          }).then(function() {
+               return watcher.get();
+          }).then(function(events) {
+               assert.equal(events.length, 1, "should have received one event");
+               assert.equal(events[0].args._consultant, consultant, "consultant must be " + consultant);
+               assert.equal(events[0].args._firstName, firstName, "firstName name must be " + firstName);
+               assert.equal(events[0].args._lastName, lastName, "lastName name must be " + lastName);
+               assert.equal(events[0].args._country, country, "country name must be " + country);
+          });
+     });
+
 });
