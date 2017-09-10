@@ -87,6 +87,48 @@ App = {
           });
      },
 
+
+
+     createResume: function() {
+          // retrieve details of the resume
+          var _firstName = $("#resume_firstName").val();
+          var _lastName = $("#resume_lastName").val();
+          var _headline = $("#resume_headline").val();
+          var _summary = $("#resume_summary").val();
+          var _country = $("#resume_country").val();
+          var _urlPicture = $("#resume_profile_pic_url").val();
+
+          if ((_firstName.trim() == '') || (_lastName.trim() == '') || (_summary.trim() == '')) {
+               // nothing to publish
+               return false;
+          }
+
+          App.contracts.Resumeum.deployed().then(function(instance) {
+               return instance.createResume(
+                    _firstName,
+                    _lastName,
+                    _headline,
+                    _summary,
+                    _country,
+                    _urlPicture, {
+                         from: App.account,
+                         gas: 500000
+                    });
+          }).then(function(result) {
+               App.reloadResumes();
+          }).catch(function(err) {
+               console.error(err);
+          });
+     },
+
+     changeImage: function(event) {
+          if (event.keyCode == 13) {
+                  var urlImage = document.getElementById("resume_profile_pic_url");
+                  $('#resume_picture').attr('src', urlImage.value);
+                  return false;
+              }
+     },
+
 };
 
 $(function() {

@@ -21,6 +21,8 @@
      <!-- Application -->
      <link href="css/app.css" rel="stylesheet">
 
+     <!-- Favicon -->
+     <link rel="shortcut icon" href="images/favicon.png">
 </head>
 
 <body>
@@ -62,7 +64,7 @@
                     <div class="panel-body">
                          <div class="row">
                               <div class="col-xs-2">
-                                   <img class="resume-picture img-responsive img-rounded" src="#" width="125" height="125" onerror="this.src='http://i.pravatar.cc/300'">
+                                   <img class="resume-picture img-responsive img-rounded" src="#" width="125" height="125" onerror="this.src='images/avatar_neutral.png'">
                               </div>
 
                               <div class="col-xs-10">
@@ -88,9 +90,9 @@
                     <div class="modal-body">
                          <div class="row">
                               <div class="col-xs-4">
-                                   <img id="imagePreview" class="img-responsive" src="#" width="230" height="177" onerror="this.src='http://i.pravatar.cc/300'">
+                                   <img id="resume_picture" class="img-responsive img-rounded" src="#" width="250" height="250" onerror="this.src='images/avatar_neutral.png'">
                                    <br>
-                                   <input type="text" class="form-control" id="resume_profile_pic_url" placeholder="URL" maxlength="32">
+                                   <input type="text" class="form-control" id="resume_profile_pic_url" placeholder="Enter the URL" onkeypress="return App.changeImage(event)">
                               </div>
 
                               <div class="col-xs-8">
@@ -114,7 +116,7 @@
                                              </div>
                                              <div class="form-group">
                                                   <label for="resume_country">Country</label>
-                                                  <input type="number" class="form-control" id="resume_country" placeholder="Country" maxlength="32">
+                                                  <input type="text" class="form-control" id="resume_country" placeholder="Country" maxlength="32">
                                              </div>
                                         </form>
                                    </div>
@@ -122,7 +124,7 @@
                          </div>
                     </div>
                     <div class="modal-footer">
-                         <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="">Submit</button>
+                         <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="App.createResume(); return false;"> Submit</button>
                          <button type="button" class="btn" data-dismiss="modal">Close</button>
                     </div>
                </div>
@@ -133,7 +135,7 @@
      <div id="footer" class="container">
           <nav class="navbar navbar-default navbar-fixed-bottom">
                <div class="navbar-inner navbar-content-center text-center">
-                    &copy; 2017 - <a href="https://twitter.com/eloudsa">Said Eloudrhiri</a></p>
+                    <p class="text-muted" credit><a href="http://chainskills.com">ChainSkills</a> - &copy; 2017 - <a href="https://twitter.com/sarbogast">Sebastien Arbogast</a> and <a href="https://twitter.com/eloudsa">Said Eloudrhiri</a></p>
                </div>
           </nav>
      </div>

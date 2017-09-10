@@ -12,19 +12,6 @@ contract Resumeum {
 
 
 
-
-     // constructor -> create a default resume
-     function Resumeum() {
-         createResume(
-              "Said",
-              "Eloudrhiri",
-              "Blockchain enthusiast",
-              "Hi, I’m Said. As a speaker, I have the pleasure to share my return of experiences about mobile development, agile development or the blockchain.",
-              "Belgium",
-              "https://goo.gl/5XzfDH");
-     }
-     
-
      // create a resume
      function createResume(
           string _firstName,
