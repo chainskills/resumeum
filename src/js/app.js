@@ -82,6 +82,15 @@ App = {
 
                // add this new resume
                resumesRow.append(resumeTemplate.html());
+
+               // hide the Create button if we already have a resume
+               if (resume[0] == App.account) {
+                    document.getElementById('createResumeButton').style.display = 'none';
+               } else {
+                    document.getElementById('createResumeButton').style.display = 'block';
+               }
+
+
           }).catch(function(err) {
                console.log(err.message);
           });
