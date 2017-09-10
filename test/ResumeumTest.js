@@ -11,6 +11,7 @@ contract('Resumeum', function(accounts) {
      var headline = "I’m an Ethereum developer";
      var summary = "In the past year, I have created a lot of Ethereum smart contracts. My personal projects are available on Github";
      var country = "Belgium";
+     var urlPicture = "https://goo.gl/5XzfDH";
 
 
      // Test case: check initial values
@@ -24,6 +25,7 @@ contract('Resumeum', function(accounts) {
                assert.equal(data[3], '', "headline must be empty");
                assert.equal(data[4], '', "summary must be empty");
                assert.equal(data[5], '', "country must be empty");
+               assert.equal(data[6], '', "URL profile picture must be empty");
           });
      });
 
@@ -36,7 +38,8 @@ contract('Resumeum', function(accounts) {
                     lastName,
                     headline,
                     summary,
-                    country, {
+                    country,
+                    urlPicture, {
                     from: consultant
                });
           }).then(function() {
@@ -48,6 +51,7 @@ contract('Resumeum', function(accounts) {
                assert.equal(data[3], headline, "headline must be " + headline);
                assert.equal(data[4], summary, "summary must be " + summary);
                assert.equal(data[5], country, "country must be " + country);
+               assert.equal(data[6], urlPicture, "URL profile picture must be " + urlPicture);
           });
      });
 });
