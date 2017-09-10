@@ -8,6 +8,22 @@ contract Resumeum {
      string headline;
      string summary;
      string country;
+     string urlPicture;
+
+
+
+
+     // constructor -> create a default resume
+     function Resumeum() {
+         createResume(
+              "Said",
+              "Eloudrhiri",
+              "Blockchain enthusiast",
+              "Hi, I’m Said. As a speaker, I have the pleasure to share my return of experiences about mobile development, agile development or the blockchain.",
+              "Belgium",
+              "https://goo.gl/5XzfDH");
+     }
+     
 
      // create a resume
      function createResume(
@@ -15,7 +31,8 @@ contract Resumeum {
           string _lastName,
           string _headline,
           string _summary,
-          string _country) public {
+          string _country,
+          string _urlPicture) public {
 
           consultant = msg.sender;
           firstName = _firstName;
@@ -23,6 +40,7 @@ contract Resumeum {
           headline = _headline;
           summary = _summary;
           country = _country;
+          urlPicture = _urlPicture;
      }
 
      // get the resume
@@ -32,8 +50,9 @@ contract Resumeum {
           string _lastName,
           string _headline,
           string _summary,
-          string _country) {
+          string _country,
+          string _urlPicture) {
 
-          return(consultant, firstName, lastName, headline, summary, country);
+          return(consultant, firstName, lastName, headline, summary, country, urlPicture);
      }
 }
