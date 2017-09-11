@@ -11,7 +11,7 @@ body {
     overflow: hidden;
 }
 
-.jumbotron .h1, .jumbotron h1 {
+.jumbotron .h1, .jumbotron h1, .jumbotron .h2, .jumbotron h2 {
   color:white;
 }
 

@@ -2,6 +2,7 @@ App = {
      web3Provider: null,
      contracts: {},
      account: 0X0,
+     servicePrice: 0,
 
 
      init: function() {
@@ -19,10 +20,27 @@ App = {
                App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
                web3 = new Web3(App.web3Provider);
           }
+
+          // display the price of the servive when the modal is displayed
+          $('#publishResume').on('shown.bs.modal', function(e) {
+               App.displayPrice();
+          })
+
           App.displayAccountInfo();
           return App.initContract();
      },
 
+
+     displayPrice: function() {
+          App.contracts.Resumeum.deployed().then(function(instance) {
+               return instance.getPrice.call();
+          }).then(function(price) {
+               servicePrice = price;
+               $('#servicePrice').text("This service costs: " + web3.fromWei(servicePrice, "ether") + " ETH");
+          }).catch(function(err) {
+               console.log(err.message);
+          });
+     },
 
      displayAccountInfo: function() {
           web3.eth.getCoinbase(function(err, account) {
@@ -37,7 +55,6 @@ App = {
                }
           });
      },
-
 
      initContract: function() {
           $.getJSON('Resumeum.json', function(resumeumArtifact) {
@@ -54,7 +71,6 @@ App = {
                return App.reloadResumes();
           });
      },
-
 
      reloadResumes: function() {
           // refresh account information because the balance may have changed
@@ -86,11 +102,11 @@ App = {
                // add this new resume
                resumesRow.append(resumeTemplate.html());
 
-               // hide the Create button if we already have a resume
+               // hide the Publish button if we already have a resume
                if (resume[0] == App.account) {
-                    document.getElementById('createResumeButton').style.display = 'none';
+                    document.getElementById('publishResumeButton').style.display = 'none';
                } else {
-                    document.getElementById('createResumeButton').style.display = 'block';
+                    document.getElementById('publishResumeButton').style.display = 'block';
                }
 
 
@@ -99,9 +115,7 @@ App = {
           });
      },
 
-
-
-     createResume: function() {
+     publishResume: function() {
           // retrieve details of the resume
           var _firstName = $("#resume_firstName").val();
           var _lastName = $("#resume_lastName").val();
@@ -116,7 +130,7 @@ App = {
           }
 
           App.contracts.Resumeum.deployed().then(function(instance) {
-               return instance.createResume(
+               return instance.publishResume(
                     _firstName,
                     _lastName,
                     _headline,
@@ -124,10 +138,10 @@ App = {
                     _country,
                     _urlPicture, {
                          from: App.account,
+                         value: servicePrice,
                          gas: 500000
                     });
-          }).then(function(result) {
-          }).catch(function(err) {
+          }).then(function(result) {}).catch(function(err) {
                console.error(err);
           });
      },
@@ -143,7 +157,7 @@ App = {
      // Listen to events raised from the contract
      listenToEvents: function() {
           App.contracts.Resumeum.deployed().then(function(instance) {
-               instance.createResumeEvent({}, {
+               instance.publishResumeEvent({}, {
                     fromBlock: 0,
                     toBlock: 'latest'
                }).watch(function(error, event) {

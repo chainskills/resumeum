@@ -29,6 +29,7 @@
      <div class="container">
           <div class="jumbotron text-center">
                <h1>Resumeum</h1>
+               <h2>Publish your resume on Ethereum</h2>
           </div>
 
           <div class="col-md-12" id="resume-list">
@@ -43,7 +44,7 @@
                     <div class="panel-heading clearfix">
                          <div class="panel-title">
                               <button class="btn btn-info btn-lg pull-left" data-toggle="collapse" data-target="#events" aria-expanded="false" aria-controls="events">Events</button>
-                              <button class="btn btn-info btn-lg pull-right" id="createResumeButton" data-toggle="modal" data-target="#createResume">Create my resume</button>
+                              <button class="btn btn-info btn-lg pull-right" id="publishResumeButton" data-toggle="modal" data-target="#publishResume">Publish my resume</button>
                          </div>
                     </div>
                     <ul id="events" class="collapse list-group"></ul>
@@ -78,15 +79,16 @@
           </div>
      </div>
 
-     <!-- Modal form to create a resume -->
-     <div class="modal fade" id="createResume" role="dialog">
+     <!-- Modal form to publish a resume -->
+     <div class="modal fade" id="publishResume" role="dialog">
           <div class="modal-dialog">
 
                <!-- Modal content-->
                <div class="modal-content">
                     <div class="modal-header">
                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                         <h4 class="modal-title">Create my resume</h4>
+                         <h3 class="modal-title">Publish my resume</h3>
+                         <h4 class="modal-title" id="servicePrice" >This service costs:</h4>
                     </div>
                     <div class="modal-body">
                          <div class="row">
@@ -125,7 +127,7 @@
                          </div>
                     </div>
                     <div class="modal-footer">
-                         <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="App.createResume(); return false;"> Submit</button>
+                         <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="App.publishResume(); return false;"> Submit</button>
                          <button type="button" class="btn" data-dismiss="modal">Close</button>
                     </div>
                </div>
