@@ -1,6 +1,8 @@
 pragma solidity ^0.4.15;
 
-contract Resumeum {
+import "./Ownable.sol";
+
+contract Resumeum is Ownable {
      // Custom types
      struct Resume {
           address consultant;
@@ -13,7 +15,6 @@ contract Resumeum {
      }
 
      // State variables
-     address owner;
      uint256 publishPrice;
      mapping (address => Resume) public resumes;
      mapping (uint => address) public consultants;
@@ -28,16 +29,8 @@ contract Resumeum {
           string _country);
 
 
-     // Modifiers
-     modifier onlyOwner() {
-          require(msg.sender == owner);
-          _;
-     }
-
-
      // constructor
      function Resumeum(uint256 _publishPrice) {
-          owner = msg.sender;
           publishPrice = _publishPrice;
      }
 
