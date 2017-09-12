@@ -19,7 +19,6 @@ contract Resumeum {
      mapping (uint => address) public consultants;
      uint consultantCounter;
 
-
      // Events
      event publishResumeEvent(
           uint indexed _position,
@@ -29,6 +28,13 @@ contract Resumeum {
           string _country);
 
 
+     // Modifiers
+     modifier onlyOwner() {
+          require(msg.sender == owner);
+          _;
+     }
+
+
      // constructor
      function Resumeum(uint256 _publishPrice) {
           owner = msg.sender;
@@ -36,10 +42,7 @@ contract Resumeum {
      }
 
      // kill the smart contract
-     function kill() {
-          // only allowed to the contract's owner
-          require(msg.sender == owner);
-
+     function kill() onlyOwner() {
           selfdestruct(owner);
      }
 
