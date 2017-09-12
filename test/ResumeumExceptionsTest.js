@@ -36,15 +36,9 @@ contract('Resumeum', function(accounts) {
                .catch(function(error) {
                     assert(error.message.indexOf('invalid opcode') >= 0, "error should be invalid opcode");
                }).then(function() {
-                    return contractInstance.getResume.call();
+                    return contractInstance.getNumberOfConsultants();
                }).then(function(data) {
-                    assert.equal(data[0], 0x0, "consultant must be empty");
-                    assert.equal(data[1], '', "first name must be empty");
-                    assert.equal(data[2], '', "last name must be empty");
-                    assert.equal(data[3], '', "headline must be empty");
-                    assert.equal(data[4], '', "summary must be empty");
-                    assert.equal(data[5], '', "country must be empty");
-                    assert.equal(data[6], '', "URL profile picture must be empty");
+                    assert.equal(data, 0, "number of consultants must be zero");
                });
      });
 
@@ -78,7 +72,17 @@ contract('Resumeum', function(accounts) {
                .catch(function(error) {
                     assert(error.message.indexOf('invalid opcode') >= 0, "error should be invalid opcode");
                }).then(function() {
-                    return contractInstance.getResume.call();
+                    return contractInstance.getNumberOfConsultants();
+               }).then(function(data) {
+                    assert.equal(data, 1, "number of consultants must be one");
+
+                    return contractInstance.getConsultants();
+               }).then(function(data) {
+                    assert.equal(data.length, 1, "there must now be 1 consultant");
+                    consultantAddress = data[0];
+                    assert.equal(consultantAddress, consultant1, "consultant must be " + consultant1);
+
+                    return contractInstance.resumes(consultantAddress);
                }).then(function(data) {
                     assert.equal(data[0], consultant1, "consultant must be " + consultant1);
                     assert.equal(data[1], firstName, "first name must be " + firstName);
@@ -109,7 +113,17 @@ contract('Resumeum', function(accounts) {
                .catch(function(error) {
                     assert(error.message.indexOf('invalid opcode') >= 0, "error should be invalid opcode");
                }).then(function() {
-                    return contractInstance.getResume.call();
+                    return contractInstance.getNumberOfConsultants();
+               }).then(function(data) {
+                    assert.equal(data, 1, "number of consultants must be one");
+
+                    return contractInstance.getConsultants();
+               }).then(function(data) {
+                    assert.equal(data.length, 1, "there must now be 1 consultant");
+                    consultantAddress = data[0];
+                    assert.equal(consultantAddress, consultant1, "consultant must be " + consultant1);
+
+                    return contractInstance.resumes(consultantAddress);
                }).then(function(data) {
                     assert.equal(data[0], consultant1, "consultant must be " + consultant1);
                     assert.equal(data[1], firstName, "first name must be " + firstName);
