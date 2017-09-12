@@ -1,21 +1,28 @@
 pragma solidity ^0.4.15;
 
 contract Resumeum {
+     // Custom types
+     struct Resume {
+          address consultant;
+          string firstName;
+          string lastName;
+          string headline;
+          string summary;
+          string country;
+          string urlPicture;
+     }
+
      // State variables
      address owner;
      uint256 publishPrice;
-     address consultant;
-     string firstName;
-     string lastName;
-     string headline;
-     string summary;
-     string country;
-     string urlPicture;
-
+     mapping (address => Resume) public resumes;
+     mapping (uint => address) public consultants;
+     uint consultantCounter;
 
 
      // Events
      event publishResumeEvent(
+          uint indexed _position,
           address indexed _consultant,
           string _firstName,
           string _lastName,
@@ -54,34 +61,46 @@ contract Resumeum {
           require(bytes(_lastName).length > 0);
 
           // one publication per consultant
-          require(consultant != msg.sender);
+          Resume memory resume = resumes[msg.sender];
+          require(resume.consultant == 0x0);
 
           // we check whether the value sent corresponds to the service price
           require(msg.value == publishPrice);
 
-          // store the values
-          consultant = msg.sender;
-          firstName = _firstName;
-          lastName = _lastName;
-          headline = _headline;
-          summary = _summary;
-          country = _country;
-          urlPicture = _urlPicture;
+          // a new consultant
+          consultantCounter++;
+
+          // store the consultant
+          consultants[consultantCounter] = msg.sender;
+
+          // store this resume
+          resumes[msg.sender] = Resume(
+               msg.sender,
+               _firstName,
+               _lastName,
+               _headline,
+               _summary,
+               _country,
+               _urlPicture
+          );
 
           // trigger the event
-          publishResumeEvent(consultant, firstName, lastName, country);
+          publishResumeEvent(consultantCounter, msg.sender, _firstName, _lastName, _country);
      }
 
-     // get the resume
-     function getResume() public constant returns (
-          address _consultant,
-          string _firstName,
-          string _lastName,
-          string _headline,
-          string _summary,
-          string _country,
-          string _urlPicture) {
+     // fetch the number of consultants in the contract
+     function getNumberOfConsultants() public constant returns (uint) {
+          return consultantCounter;
+     }
 
-          return(consultant, firstName, lastName, headline, summary, country, urlPicture);
+     // fetch all consultants
+     function getConsultants() public constant returns (address[]) {
+
+          address[] memory consultantsList = new address[](consultantCounter);
+          for (uint i = 0; i < consultantCounter; i++) {
+               consultantsList[i] = consultants[i + 1];
+          }
+
+          return consultantsList;
      }
 }
