@@ -35,6 +35,14 @@ contract Resumeum {
           publishPrice = _publishPrice;
      }
 
+     // kill the smart contract
+     function kill() {
+          // only allowed to the contract's owner
+          require(msg.sender == owner);
+
+          selfdestruct(owner);
+     }
+
      // change the publication price (only for owner)
      function setPrice(uint256 _publishPrice) {
           require(msg.sender == owner);
