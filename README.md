@@ -25,7 +25,7 @@ To build, to deploy and to test your Dapp locally, you need to install the follo
 ## Step 2. Install all modules
 
 ```
-$ cd resumeum 
+$ cd resumeum
 $ npm install
 ```
 
@@ -33,7 +33,7 @@ $ npm install
 
 Start testrpc or your private chain with a set of predefined accounts and an initial balance:
 ```
-testrpc --account="0x351494a5ae8f9b70a2a2fd482146ab4578f61d4d796685c597ec6683635a940e, 100000000000000000000" --account="0x4cd491f96e6623edb52719a8d4d1110a87d8d83e3fa86f8e14007cb3831c0a2b, 100000000000000000000" --account="0xef40e0d6ada046010b6965d73603cabae1a119ca804f5d9e9a9ce866b0bea7d, 100000000000000000000"
+$ ./starttestrpc.sh
 ```
 
 The accounts are the private keys not the public keys (addresses) that you will use to submit your transactions.
@@ -98,7 +98,8 @@ Here below a short example:
 
 ### Open the console:
 ```
-$ truffle console truffle(development)>
+$ truffle console
+truffle(development)>
 ```
 
 ### Get an instance of the smart contract:
@@ -109,12 +110,14 @@ From now, you can use the variable **app** to interact with your smart contract.
 
 ### List your accounts:
 ```
-truffle(development)> web3.eth.accounts [ '0x00d1ae0a6fc13b9ecdefa118b94cf95ac16d4ab0',   '0x1daa654cfbc28f375e0f08f329de219fff50c765',   '0xc2dbc0a6b68d6148d80273ce4d6667477dbf2aa7' ]
+truffle(development)> web3.eth.accounts
+[ '0x00d1ae0a6fc13b9ecdefa118b94cf95ac16d4ab0',   '0x1daa654cfbc28f375e0f08f329de219fff50c765',   '0xc2dbc0a6b68d6148d80273ce4d6667477dbf2aa7' ]
 ```
 
 ### Get the price of the service:
 ```
-truffle(development)> app.getPrice.call() { [String: '40000000000000000'] s: 1, e: 16, c: [ 400 ] }
+truffle(development)> app.getPrice.call()
+{ [String: '40000000000000000'] s: 1, e: 16, c: [ 400 ] }
 ```
 
 ### Change the price of the service (as the contract's owner):
@@ -139,7 +142,8 @@ truffle(development)> var resumeEvent = app.publishResumeEvent({}, {fromBlock: 0
 
 ### Get the list of resumes:
 ```
-truffle(development)> app.getResume.call() [ '0x1daa654cfbc28f375e0f08f329de219fff50c765',   'John',   'Doe',   'I’m an Ethereum developer',   'In the past year, I have created a lot of Ethereum smart contracts. My personal projects are available on Github',   'Belgium',   'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png' ]
+truffle(development)> app.getResume.call()
+[ '0x1daa654cfbc28f375e0f08f329de219fff50c765',   'John',   'Doe',   'I’m an Ethereum developer',   'In the past year, I have created a lot of Ethereum smart contracts. My personal projects are available on Github',   'Belgium',   'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png' ]
 ```
 
 #
@@ -152,7 +156,8 @@ truffle(development)> app.publishResume("Jane", "Smith", "I'm an blockchain deve
 
 ### Get the addresses of the consultants that have published a resume:
 ```
-truffle(development)> app.getConsultants() [ '0x1daa654cfbc28f375e0f08f329de219fff50c765',   '0xc2dbc0a6b68d6148d80273ce4d6667477dbf2aa7' ]
+truffle(development)> app.getConsultants()
+[ '0x1daa654cfbc28f375e0f08f329de219fff50c765',   '0xc2dbc0a6b68d6148d80273ce4d6667477dbf2aa7' ]
 ```
 
 ### Get the detail of a resume owned by a consultant:
