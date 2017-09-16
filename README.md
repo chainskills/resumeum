@@ -180,7 +180,7 @@ truffle(development)> app.kill({from: web3.eth.accounts[0]})
 
 ## Learn more
 
-If you want to learn more on how to create your own Dapp with Ethereum and Solidity, we encourage you to follow the course published by the ChainSkills team: https://www.udemy.com/getting-started-with-ethereum-solidity-development
+Learn in detail all the steps required to install, to build and to deploy a Dapp by following our course available on Udemy: https://www.udemy.com/getting-started-with-ethereum-solidity-development
 
 Have fun !!!
 
