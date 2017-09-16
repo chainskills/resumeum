@@ -7,16 +7,16 @@ Follow the steps described here below to install, deploy and run the Dapp.
 
 To build, to deploy and to test your Dapp locally, you need to install the following tools and frameworks:
 * **node.js and npm**: https://nodejs.org/en/
-* Node.js can be installed from an installation bundle or through some package managers as Homebrew form Mac.
+  * Node.js can be installed from an installation bundle or through some package managers as Homebrew form Mac.
 
 * **Truffle**: https://github.com/trufflesuite/truffle
-* Create and deploy your Dapp with this development environment for Ethereum.
+  * Create and deploy your Dapp with this development environment for Ethereum.
 
 * **testrpc**: https://github.com/ethereumjs/testrpc
-* Simulate an Ethereum node.
+  * Simulate an Ethereum node.
 
 * **Mestamask**: https://metamask.io/
-* Transform Chrome as a Dapp browser
+  * Transform Chrome as a Dapp browser
 
 ## Step 1. Clone the project
 
