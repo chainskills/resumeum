@@ -47,7 +47,13 @@ The first account will be the **coinbase**, the default account used to start yo
 
 Edit the file "truffle.js" and set the port number according to your Ethereum node.
 
-## Step 5. Compile and Deploy your smart contract
+## Step 5. Test your project
+
+```
+$ truffle test
+```
+
+## Step 6. Compile and Deploy your smart contract
 
 ```
 $ truffle migrate --reset
@@ -55,11 +61,11 @@ $ truffle migrate --reset
 
 You will have to migrate (deploy) your smart contract each time your restart **testrpc**.
 
-## Step 6. Metamask: connect to your private node
+## Step 7. Metamask: connect to your private node
 
 Open the Chrome’s Metamask extension and switch it to the network "Localhost 8545".
 
-## Step 7. Metamask: import your accounts
+## Step 8. Metamask: import your accounts
 
 Import accounts defined in your testrpc Ethereum node.
 
@@ -73,7 +79,7 @@ On Metamask, rename these accounts respectively:
 * testrpc-account1
 * testrpc-account2
 
-## Step 8. Run your frontend application
+## Step 9. Run your frontend application
 
 ```
 $ npm run dev
@@ -81,17 +87,17 @@ $ npm run dev
 
 From your browser, open the URL: http://localhost:8080
 
-## Step 9. Metamask: switch to the account testrpc-account1
+## Step 10. Metamask: switch to the account testrpc-account1
 
 When you change Metamask (network or the current account), you have to refresh your web page to let your frontend application takes the changes into account.
 
-## Step 10. Publish resumes
+## Step 11. Publish resumes
 
 You can publish your resume using accounts imported on Metamask.
 
 Metamask will ask you to confirm the transaction before publish your resume.
 
-## Step 11. Interact with the smart contract:
+## Step 12. Interact with the smart contract:
 
 From your console window, you can use the Truffle console to inspect the status of your contract.
 
