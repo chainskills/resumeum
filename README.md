@@ -3,6 +3,9 @@ Sample Ethereum Dapp to create your resume on Ethereum.
 
 Follow the steps described here below to install, deploy and run the Dapp.
 
+## Warning
+**Ensure that your tests are not performed on the Main Ethereum Network otherwise your real ethers will be used with no chance to get them back**
+
 ## Prerequisites: Install tools and frameworks
 
 To build, to deploy and to test your Dapp locally, you need to install the following tools and frameworks:
@@ -86,9 +89,7 @@ When you change Metamask (network or the current account), you have to refresh y
 
 You can publish your resume using accounts imported on Metamask.
 
-Metasmask will ask you to confirm the transaction before publish your resume.
-
-**PLEASE ENSURE THAT METAMASK IS NOT CONNECTED TO THE MAIN ETHEREUM NETWORK OTHERWISE YOU WILL USE YOUR REAL ETHER**
+Metamask will ask you to confirm the transaction before publish your resume.
 
 ## Step 11. Interact with the smart contract:
 
@@ -173,7 +174,7 @@ truffle(development)> app.kill({from: web3.eth.accounts[0]})
 
 ## Tips
 
-* Is Metasmask slow ? try to disable and enable the extension.
+* Is Metamask slow ? try to disable and enable the extension.
 * This behavior happens sometimes mainly when we work with a private chain.
 * When you switch the account from Metamask, don't forget to refresh the page of your application to ensure to get the current account set on Metamask.
 
