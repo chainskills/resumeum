@@ -25,7 +25,8 @@ To build, to deploy and to test your Dapp locally, you need to install the follo
 ## Step 2. Install all modules
 
 ```
-$ cd resumeum $ npm install
+$ cd resumeum 
+$ npm install
 ```
 
 ## Step 3. Start your Ethereum node
