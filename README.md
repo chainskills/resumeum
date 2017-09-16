@@ -18,7 +18,7 @@ To build, to deploy and to test your Dapp locally, you need to install the follo
 * **testrpc**: https://github.com/ethereumjs/testrpc
   * Simulate an Ethereum node.
 
-* **Mestamask**: https://metamask.io/
+* **Metamask**: https://metamask.io/
   * Transform Chrome as a Dapp browser
 
 ## Step 1. Clone the project
