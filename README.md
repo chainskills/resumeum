@@ -34,18 +34,17 @@ $ npm install
 
 ## Step 3. Start your Ethereum node
 
-Start testrpc or your private chain with a set of predefined accounts and an initial balance:
+Start testrpc or your private chain. We added a script at the root of the project that starts a testrpc instance with 3 predefined accounts.
+
 ```
 $ ./starttestrpc.sh
 ```
 
-The accounts are the private keys not the public keys (addresses) that you will use to submit your transactions.
-
-The first account will be the **coinbase**, the default account used to start your node and the contract owner.
+The first account will be the **coinbase**, the account that will deploy the contracts.
 
 ## Step 4. Configure your project
 
-Edit the file "truffle.js" and set the port number according to your Ethereum node.
+If you didn't use the `starttestrpc.sh` script and started your own private chain instead, you should edit the `truffle.js` file and set the port number according to your Ethereum node.
 
 ## Step 5. Test your project
 
@@ -53,7 +52,7 @@ Edit the file "truffle.js" and set the port number according to your Ethereum no
 $ truffle test
 ```
 
-## Step 6. Compile and Deploy your smart contract
+## Step 6. Compile and deploy your smart contract
 
 ```
 $ truffle migrate --reset
@@ -63,13 +62,13 @@ You will have to migrate (deploy) your smart contract each time your restart **t
 
 ## Step 7. Metamask: connect to your private node
 
-Open the Chrome’s Metamask extension and switch it to the network "Localhost 8545".
+Open the Chrome’s Metamask extension and switch it to the "Localhost 8545" network.
 
 ## Step 8. Metamask: import your accounts
 
 Import accounts defined in your testrpc Ethereum node.
 
-Accounts and those defined in the Step 3:
+If you used `starttestrpc.sh`, here are the 3 private keys defined in the script:
 * 0x351494a5ae8f9b70a2a2fd482146ab4578f61d4d796685c597ec6683635a940e
 * 0x4cd491f96e6623edb52719a8d4d1110a87d8d83e3fa86f8e14007cb3831c0a2b
 * 0xef40e0d6ada046010b6965d73603cabae1a119ca804f5d9e9a9ce866b0bea7d
@@ -85,23 +84,23 @@ On Metamask, rename these accounts respectively:
 $ npm run dev
 ```
 
-From your browser, open the URL: http://localhost:8080
+In your browser, open the following URL: http://localhost:8080
 
 ## Step 10. Metamask: switch to the account testrpc-account1
 
-When you change Metamask (network or the current account), you have to refresh your web page to let your frontend application takes the changes into account.
+When you switch accounts or networks in Metamask, you have to refresh your  page to let your frontend application know about it.
 
 ## Step 11. Publish resumes
 
-You can publish your resume using accounts imported on Metamask.
+You can publish your resume.
 
-Metamask will ask you to confirm the transaction before publish your resume.
+Metamask will ask you to confirm the transaction before publishing your resume.
 
 ## Step 12. Interact with the smart contract:
 
-From your console window, you can use the Truffle console to inspect the status of your contract.
+From your console window in Terminal, you can use the Truffle console to inspect the status of your contract.
 
-Here below a short example:
+Here is a short example:
 
 ### Open the console:
 ```
@@ -113,7 +112,7 @@ truffle(development)>
 ```
 truffle(development)> Resumeum.deployed().then(function(instance) {app = instance; })
 ```
-From now, you can use the variable **app** to interact with your smart contract.
+From now on, you can use the variable **app** to interact with your smart contract.
 
 ### List your accounts:
 ```
@@ -180,13 +179,12 @@ truffle(development)> app.kill({from: web3.eth.accounts[0]})
 
 ## Tips
 
-* Is Metamask slow ? try to disable and enable the extension.
-* This behavior happens sometimes mainly when we work with a private chain.
-* When you switch the account from Metamask, don't forget to refresh the page of your application to ensure to get the current account set on Metamask.
+* Is Metamask slow ? try to disable and enable the extension. This behavior happens sometimes mainly when we work with a private chain.
+* When you switch accounts in Metamask, don't forget to refresh the page to make sure you get the current account set in Metamask.
 
 ## Learn more
 
-Learn in detail all the steps required to install, to build and to deploy a Dapp by following our course available on Udemy: https://www.udemy.com/getting-started-with-ethereum-solidity-development
+If you want to know more about all the steps required to install, build and  deploy a Dapp, you can subscribe to our course available on Udemy: https://www.udemy.com/getting-started-with-ethereum-solidity-development
 
 Have fun !!!
 
