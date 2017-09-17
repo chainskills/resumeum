@@ -1,31 +1,31 @@
 # Resumeum - Publish your resume on Ethereum
 Sample Ethereum Dapp to create your resume on Ethereum.
 
-Follow the steps described here below to install, deploy and run the Dapp.
+Follow the steps described below to install, deploy and run the Dapp.
 
 ## Warning
-**Ensure that your tests are not performed on the Main Ethereum Network otherwise your real ethers will be used with no chance to get them back**
+**Make that you don't run your tests on the Ethereum's main net otherwise you will spend real ether with no chance to get it back**
 
 ## Prerequisites: Install tools and frameworks
 
-To build, to deploy and to test your Dapp locally, you need to install the following tools and frameworks:
+To build, deploy and test your Dapp locally, you need to install the following tools and frameworks:
 * **node.js and npm**: https://nodejs.org/en/
-  * Node.js can be installed from an installation bundle or through some package managers as Homebrew form Mac.
+  * Node.js can be installed from an installation package or through some package managers such as Homebrew on a Mac.
 
 * **Truffle**: https://github.com/trufflesuite/truffle
-  * Create and deploy your Dapp with this development environment for Ethereum.
+  * Create and deploy your Dapp with this build framework for Ethereum.
 
 * **testrpc**: https://github.com/ethereumjs/testrpc
-  * Simulate an Ethereum node.
+  * Simulates an Ethereum node.
 
 * **Metamask**: https://metamask.io/
-  * Transform Chrome as a Dapp browser
+  * Transforms Chrome into a Dapp browser
 
 ## Step 1. Clone the project
 
 `git clone https://github.com/chainskills/resumeum`
 
-## Step 2. Install all modules
+## Step 2. Install all dependencies
 
 ```
 $ cd resumeum
@@ -60,9 +60,9 @@ $ truffle migrate --reset
 
 You will have to migrate (deploy) your smart contract each time your restart **testrpc**.
 
-## Step 7. Metamask: connect to your private node
+## Step 7. Metamask: connect to your local Ethereum node
 
-Open the Chrome’s Metamask extension and switch it to the "Localhost 8545" network.
+Unlock the Metamask extension in Chrome, and switch it to the network "Localhost 8545".
 
 ## Step 8. Metamask: import your accounts
 
@@ -73,7 +73,7 @@ If you used `starttestrpc.sh`, here are the 3 private keys defined in the script
 * 0x4cd491f96e6623edb52719a8d4d1110a87d8d83e3fa86f8e14007cb3831c0a2b
 * 0xef40e0d6ada046010b6965d73603cabae1a119ca804f5d9e9a9ce866b0bea7d
 
-On Metamask, rename these accounts respectively:
+In Metamask, rename these accounts respectively:
 * testrpc-coinbase
 * testrpc-account1
 * testrpc-account2
@@ -86,7 +86,7 @@ $ npm run dev
 
 In your browser, open the following URL: http://localhost:8080
 
-## Step 10. Metamask: switch to the account testrpc-account1
+## Step 10. Metamask: switch to the `testrpc-account1` account
 
 When you switch accounts or networks in Metamask, you have to refresh your  page to let your frontend application know about it.
 
@@ -112,7 +112,7 @@ truffle(development)>
 ```
 truffle(development)> Resumeum.deployed().then(function(instance) {app = instance; })
 ```
-From now on, you can use the variable **app** to interact with your smart contract.
+From now on, you can use the `app` variable to interact with your smart contract.
 
 ### List your accounts:
 ```
@@ -179,7 +179,7 @@ truffle(development)> app.kill({from: web3.eth.accounts[0]})
 
 ## Tips
 
-* Is Metamask slow ? try to disable and enable the extension. This behavior happens sometimes mainly when we work with a private chain.
+* Is Metamask slow ? try to disable and enable the extension. This happens sometimes, especially when we work with a private chain.
 * When you switch accounts in Metamask, don't forget to refresh the page to make sure you get the current account set in Metamask.
 
 ## Learn more
