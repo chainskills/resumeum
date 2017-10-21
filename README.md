@@ -84,7 +84,7 @@ In Metamask, rename these accounts respectively:
 $ npm run dev
 ```
 
-In your browser, open the following URL: http://localhost:8080
+In your browser, open the following URL: http://localhost:3000
 
 ## Step 10. Metamask: switch to the `testrpc-account1` account
 
